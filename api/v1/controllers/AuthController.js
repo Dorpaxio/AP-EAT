@@ -86,7 +86,12 @@ exports.register = function (req, res) {
 exports.login = function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({errors: errors.array()});
+        return res.status(400).json({
+            ok: false,
+            code: 'AU40001',
+            message: 'Missing or bad formatted values',
+            fields: Object.keys(errors.mapped())
+        });
     }
 
     const {email, password} = req.body;
