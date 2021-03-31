@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
+const errorHandler = require('./lib/ErrorHandlerMiddleware');
 
 app.use(require('helmet')());
 app.use(function (req, res, next) {
@@ -17,14 +18,16 @@ app.set('json spaces', 4);
 
 // -- CSRF --
 app.use(cookieParser());
-app.use(csrf({cookie: true}));
+/*app.use(csrf({cookie: true}));
 app.get('/', function (req, res) {
    res.cookie('XSRF-TOKEN', req.csrfToken(), {sameSite: 'lax'});
    res.status(200).json({
        message: `Version disponible : v1`
    });
-});
+});*/
 // --
+
+app.use(errorHandler);
 
 app.use('/v1', require('./api/v1/routes'));
 

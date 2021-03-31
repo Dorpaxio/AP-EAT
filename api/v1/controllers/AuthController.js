@@ -12,7 +12,7 @@ const generateToken = exports.generateToken = function generateToken(userId) {
     return jwt.sign({uid: userId}, config.jwt_secret, {expiresIn: '2w'});
 }
 
-const checkToken = exports.checkToken = function (req, res, next) {
+exports.checkToken = function (req, res, next) {
     return expressJwt({
         secret: config.jwt_secret, getToken: function fromHeaderOrQuerystring(req) {
             if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
