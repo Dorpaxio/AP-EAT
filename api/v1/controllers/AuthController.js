@@ -109,6 +109,10 @@ exports.login = function (req, res) {
     });
 }
 
+exports.getCurrentUser = function (req, res) {
+    return res.status(200).json(req.user);
+}
+
 
 
 
