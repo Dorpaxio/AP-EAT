@@ -5,6 +5,43 @@ const config = require('./config');
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./lib/ErrorHandlerMiddleware');
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+const swaggerOptions = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "AP-EAT",
+            version: "1.0.0",
+            description: "API pour services de livraison de nourriture.",
+            license: {
+                name: "MIT",
+                url: "https://spdx.org/licenses/MIT.html",
+            },
+            contact: {
+                name: "Dorpaxio",
+                url: "https://dorpax.io",
+                email: "dorpaxione@gmail.com",
+            },
+        },
+        servers: [
+            {
+                url: "http://localhost:29321/v1",
+            },
+        ],
+    },
+    apis: [
+        './api/v1/routes/index.js',
+        './api/v1/routes/*/index.js'
+    ],
+};
+
+app.use(
+    "/v1/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerJsdoc(swaggerOptions))
+);
 
 app.use(require('helmet')());
 app.use(function (req, res, next) {
