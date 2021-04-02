@@ -52,16 +52,6 @@ function authorizeUser(user, req, res) {
 }
 
 exports.register = function (req, res) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({
-            ok: false,
-            code: 'AU40000',
-            message: 'Missing or bad formatted values',
-            fields: Object.keys(errors.mapped())
-        });
-    }
-
     return User.findOne({}, function (err, user) {
         if (err) return res.status(500).send(err);
         const isFirstUser = user === null;
@@ -84,16 +74,6 @@ exports.register = function (req, res) {
 }
 
 exports.login = function (req, res) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({
-            ok: false,
-            code: 'AU40001',
-            message: 'Missing or bad formatted values',
-            fields: Object.keys(errors.mapped())
-        });
-    }
-
     const {email, password} = req.body;
 
     User.findOne({email: email}, '+password', function (err, user) {

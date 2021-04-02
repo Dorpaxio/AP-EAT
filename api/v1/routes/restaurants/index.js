@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const restaurantsController = require('../../controllers/RestaurantsController');
+const productsController = require('../../controllers/ProductsController');
+const isRestaurant = require('../../middlewares/RestaurantMiddleware');
 
 router.route('/')
     .get(restaurantsController.getRestaurants);
@@ -7,6 +9,10 @@ router.route('/')
 router.param('restaurantId', restaurantsController.restaurantParamMiddleware);
 router.route('/:restaurantId')
     .get(restaurantsController.getRestaurant);
+
+router.route('/:restaurantId/products')
+    .get(isRestaurant, productsController.getRestaurantProducts)
+    .post(isRestaurant, productsController.addProductToRestaurant);
 
 module.exports = router;
 

@@ -35,5 +35,27 @@ module.exports = router;
  *         $ref: '#/components/responses/UnauthorizedError'
  *       403:
  *         description: N'est pas administateur (**AD40300**)
- *
+ * /carts/{cartId}:
+ *   get:
+ *     summary: Récupérer le contenu d'un seul panier. (Admin)
+ *     description: Récupérer le contenu d'un seul panier. **Admin**
+ *     tags:
+ *       - Carts
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: cartId
+ *         schema:
+ *           type: string
+ *           format: ObjectId
+ *         required: true
+ *         description: Identifiant du panier au format ObjectId.
+ *     responses:
+ *       200:
+ *         description: Retourne le contenu d'un seul panier.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cart'
  */

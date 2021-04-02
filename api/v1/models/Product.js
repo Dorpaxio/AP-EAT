@@ -6,13 +6,10 @@ const productSchema = new mongoose.Schema({
     img_url: {type: String, required: false},
     extras: {
         type: [{
-            type: {
-                _id: false,
-                __v: false,
-                product: {type: mongoose.Types.ObjectId, required: true},
-                price: {type: Number, default: 0}
-            },
-            ref: 'Product'
+            _id: false,
+            __v: false,
+            product: {type: mongoose.Types.ObjectId, ref: 'Product', required: true},
+            price: {type: Number, default: 0}
         }],
         required: false
     },
