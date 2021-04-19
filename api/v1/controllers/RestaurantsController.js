@@ -12,7 +12,7 @@ exports.getRestaurants = function (req, res) {
 }
 
 exports.restaurantParamMiddleware = function (req, res, next, restaurantId) {
-    const canSeeAllFields = req.user.admin || req.user._id === restaurantId;
+    const canSeeAllFields = req.user.admin || req.user._id.equals(restaurantId);
     const select = excludedFields.reduce((obj, next) => obj = {...obj, [next]: 0}, {});
     const query = Restaurant.findOne({_id: restaurantId}).select(!canSeeAllFields ? select : {});
     return query.exec(function (err, restaurant) {

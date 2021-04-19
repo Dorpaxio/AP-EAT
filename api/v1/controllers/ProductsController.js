@@ -15,16 +15,16 @@ exports.getProducts = function (req, res, next) {
     }).catch(next);
 }
 
-exports.getRestaurantProducts = function (req, res, next) {
+exports.getRestaurantProducts = async function (req, res, next) {
     if (!req.restaurant._id.equals(req.user._id))
-        return next(new ForbiddenError('PR40300', 'You have to be the restaurant owner.'));
+        throw new ForbiddenError('PR40300', 'You have to be the restaurant owner.');
 
-    return res.status(200).json(req.restaurant.products);
+    return res.status(200).json((await req.restaurant.populate('products').execPopulate()).products);
 }
 
 exports.addProductToRestaurant = function (req, res, next) {
     if (!req.restaurant._id.equals(req.user._id))
-        return next(new ForbiddenError('PR40301', 'You have to be the restaurant owner.'));
+        throw new ForbiddenError('PR40301', 'You have to be the restaurant owner.');
 
     return req.user.addProduct(req.body).then(function (products) {
         return res.status(201).json(products);
