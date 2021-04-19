@@ -2,7 +2,6 @@ const User = require('../models/users/User');
 const config = require('../../../config');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
-const {validationResult} = require('express-validator');
 
 /* Nous authentifions nos utilisateurs avec des JWT, en revanche, pour un gain de temps, nous n'utiliserons pas
 * de RefreshToken et nous fixons l'expiration des AccessToken à une date lointaine. Ce procédé est évidemment

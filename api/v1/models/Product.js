@@ -16,4 +16,13 @@ const productSchema = new mongoose.Schema({
     type: {type: String, required: false}
 });
 
+/**
+ * @class Product
+ * @property {ObjectId} _id Identifiant du produit
+ * @property {string} name Nom du produit
+ * @property {string} description Description du produit
+ * @property {string} img_url Adresse de l'image de présentation du produit
+ * @property {[{product:ObjectId, price: number}]} extras Suppléments du produit
+ * @property {string} type Type du produit
+ */
 module.exports = mongoose.model('Product', productSchema);
