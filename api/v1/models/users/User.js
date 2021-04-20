@@ -47,6 +47,11 @@ userSchema.pre('save', function (next) {
     });
 });
 
+/**
+ * @alias User.prototype.comparePassword
+ * @param candidatePassword {string}
+ * @returns {Promise<boolean>}
+ */
 userSchema.methods.comparePassword = function (candidatePassword) {
     return new Promise((resolve, reject) => {
         bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {

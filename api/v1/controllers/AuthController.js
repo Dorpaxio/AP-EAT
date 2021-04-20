@@ -2,6 +2,7 @@ const User = require('../models/users/User');
 const config = require('../../../config');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
+const {UserNotFoundError, ConflictError} = require('../errors');
 
 /* Nous authentifions nos utilisateurs avec des JWT, en revanche, pour un gain de temps, nous n'utiliserons pas
 * de RefreshToken et nous fixons l'expiration des AccessToken à une date lointaine. Ce procédé est évidemment
@@ -24,8 +25,8 @@ exports.checkToken = function (req, res, next) {
     })(req, res, function (error) {
         if (error) return res.status(error.status).send(error);
         User.findOne({_id: req.user.uid}, function (err, user) {
-            if (err) return res.status(500).send(err);
-            if (!user) return res.status(404).json({ok: false, code: 'AU40400', message: 'User not found.'});
+            if (err) return next(err);
+            if (!user) return next(new UserNotFoundError());
 
             req.user = user;
 
@@ -43,49 +44,41 @@ function authorizeUser(user, req, res) {
         maxAge: 2 * 7 * 24 * 60 * 60 * 1000
     });
     return res.status(200).json({
-        ok: true,
         token: accessToken,
         expires: Date.now() + 2 * 7 * 24 * 60 * 60 * 1000,
         user: noPassUser
     });
 }
 
-exports.register = function (req, res) {
-    return User.findOne({}, function (err, user) {
-        if (err) return res.status(500).send(err);
-        const isFirstUser = user === null;
+exports.register = async function (req, res, next) {
+    try {
+        const isFirstUser = (await User.findOne({}).exec()) === null;
+        const user = await User.findOne({email: req.body.email});
+        if (user) return next(new ConflictError('AU40900', 'Email is already in use.'));
 
-        return User.findOne({email: req.body.email}, function (err, user) {
-            if (err) return res.status(500).send(err);
-            if (user) return res.status(409).json({ok: false, code: 'AU40900', message: 'Email is already in use.'});
-
-            const newUser = new User({
-                ...req.body,
-                admin: isFirstUser
-            });
-
-            return newUser.save(function (err, user) {
-                if (err) return res.status(500).send(err);
+        return (new User({...req.body, admin: isFirstUser})).save()
+            .then(function (user) {
                 return authorizeUser(user, req, res);
-            });
-        });
-    });
+            }).catch(next);
+    } catch (err) {
+        next(err);
+    }
 }
 
-exports.login = function (req, res) {
-    const {email, password} = req.body;
+exports.login = async function (req, res, next) {
+    try {
+        const {email, password} = req.body;
+        const user = await User.findOne({email: email}, '+password');
+        if (!user)
+            return next(new UserNotFoundError('AU40401', 'Wrong email or password.'));
 
-    User.findOne({email: email}, '+password', function (err, user) {
-        if (err) return res.status(500).send(err);
-        if (!user) return res.status(404).json({ok: false, code: 'AU40401', message: 'Wrong email or password.'});
+        if (!(await user.comparePassword(password)))
+            return next(new UserNotFoundError('AU40401', 'Wrong email or password.'));
 
-        user.comparePassword(password).then(function (match) {
-            if (match) return authorizeUser(user, req, res);
-            return res.status(404).json({ok: false, code: 'AU40401', message: 'Wrong email or password.'});
-        }).catch(function (err) {
-            return res.status(500).send(err);
-        });
-    });
+        return authorizeUser(user, req, res);
+    } catch (err) {
+        next(err);
+    }
 }
 
 exports.getCurrentUser = function (req, res) {

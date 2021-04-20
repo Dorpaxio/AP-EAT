@@ -1,8 +1,5 @@
-const Cart = require('../models/Cart'),
-    Restaurant = require('../models/users/Restaurant'),
-    Menu = require('../models/Menu');
-const {validationResult} = require('express-validator');
-const {ForbiddenError} = require('../errors');
+const Cart = require('../models/Cart');
+const {ForbiddenError, CartNotFoundError} = require('../errors');
 
 exports.getCarts = function (req, res) {
     return Cart.find({}, function (err, carts) {
@@ -12,25 +9,21 @@ exports.getCarts = function (req, res) {
 }
 
 exports.cartParamMiddleware = function (req, res, next, cartId) {
-    return Cart.findOne({_id: cartId}, function (err, cart) {
-        if (err) return res.status(500).send(err);
-        if (!cart) return res.status(404).json({ok: false, code: 'CA40400', message: 'Cart not found.'});
-
+    return Cart.findOne({_id: cartId}).then(function (cart) {
+        if (!cart) throw new CartNotFoundError();
         req.cart = cart;
-
         return next();
-    });
+    }).catch(next);
 }
 
 exports.getCart = function (req, res) {
     return res.status(200).json(req.cart);
 }
 
-exports.getClientCart = function (req, res) {
-    return Cart.findOne({client: req.client._id}, function (err, cart) {
-        if (err) return res.status(500).send(err);
+exports.getClientCart = function (req, res, next) {
+    return Cart.findOne({client: req.client._id}).then(function (cart) {
         return res.status(200).json(cart || {});
-    });
+    }).catch(next);
 }
 
 exports.addInCart = async function (req, res, next) {
