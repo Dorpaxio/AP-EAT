@@ -21,21 +21,22 @@ exports.getCart = function (req, res) {
 }
 
 exports.getClientCart = function (req, res, next) {
-    return Cart.findOne({client: req.client._id}).then(function (cart) {
-        return res.status(200).json(cart || {});
+    if (req.user.type !== 'client') throw new ForbiddenError('CA40301', 'Only clients have a cart.');
+    return req.user.getCart().then(function (cart) {
+        return res.status(200).json(cart);
     }).catch(next);
 }
 
 exports.addInCart = async function (req, res, next) {
-    const client = req.user;
-    const {menu, restaurant} = req.body;
+    try {
+        const client = req.user;
+        const {menu, restaurant} = req.body;
 
-    if (client.type !== 'client') return next(new ForbiddenError('CA40300', 'Only clients can add elements in cart'));
+        if (client.type !== 'client')
+            return next(new ForbiddenError('CA40300', 'Only clients can add elements in cart'));
 
-    return Cart.findOne({client: client._id}).then(function (cart) {
-       if(!cart) cart = new Cart({client: client._id, restaurant, menus: []});
-       return cart.addMenu(menu, restaurant);
-    }).then(function (cart) {
-        return res.status(200).json(cart);
-    }).catch(next);
+        return res.status(200).json(await client.addInCart(menu, restaurant));
+    } catch(err) {
+        next(err);
+    }
 }

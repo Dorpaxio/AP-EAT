@@ -5,7 +5,7 @@ const isAdmin = require('../../middlewares/AdminMiddleware');
 router.route('/')
     .get(productsController.getProducts);
 
-//router.param('productId', productsController.productParamMiddleware);
+router.param('productId', productsController.productParamMiddleware);
 //router.route('/:productId').get(productsController.getProduct);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const APEatError = require('./APEatError');
+const APEatError = require('../APEatError');
 
 module.exports = class ForbiddenError extends APEatError {
     constructor(code, message) {
