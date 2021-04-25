@@ -10,5 +10,6 @@ module.exports = {
     CartNotFoundError: require('./NotFoundErrors/CartNotFoundError'),
     ProductNotFoundError: require('./NotFoundErrors/ProductNotFoundError'),
     NotRestaurantOwnerError: require('./ForbiddenErrors/NotRestaurantOwnerError'),
-    OrderNotFoundError: require('./NotFoundErrors/OrderNotFoundError')
+    OrderNotFoundError: require('./NotFoundErrors/OrderNotFoundError'),
+    DelivererNotFoundError: require('./NotFoundErrors/DelivererNotFoundError')
 }

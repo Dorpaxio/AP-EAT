@@ -3,13 +3,6 @@ const Menu = require('./Menu');
 const Restaurant = require('./users/Restaurant');
 const {MenuNotFoundError, RestaurantNotFoundError, ConflictError} = require('../errors');
 
-/**
- * @class Cart
- * @property {ObjectId} _id Identifiant du panier
- * @property {ObjectId} restaurant Identifiant du restaurant associé au panier
- * @property {ObjectId} client Identifiant du client détenteur du panier
- * @property {[ObjectId]} menus Identifiants du/des menu(s) ajouté(s) par le client
- */
 const cartSchema = new mongoose.Schema({
     restaurant: {type: mongoose.Types.ObjectId, ref: 'Restaurant', required: true},
     client: {type: mongoose.Types.ObjectId, ref: 'Client', required: true},
@@ -43,4 +36,11 @@ cartSchema.methods.addMenu = async function (menuId, restaurantId) {
     return this.save();
 }
 
+/**
+ * @class Cart
+ * @property {ObjectId} _id Identifiant du panier
+ * @property {ObjectId} restaurant Identifiant du restaurant associé au panier
+ * @property {ObjectId} client Identifiant du client détenteur du panier
+ * @property {[ObjectId]} menus Identifiants du/des menu(s) ajouté(s) par le client
+ */
 module.exports = mongoose.model('Cart', cartSchema);

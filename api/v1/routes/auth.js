@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const authController = require('../../controllers/AuthController');
+const authController = require('../controllers/AuthController');
 const {body} = require('express-validator');
-const validation = require('../../../../lib/ValidationHandlerMiddleware');
+const validation = require('../../../lib/ValidationHandlerMiddleware');
 
 router.route('/')
     .all(body('email').not().isEmpty().isEmail().normalizeEmail(),
