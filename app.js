@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 
 app.use('/v1', require('./api/v1/routes'));
 
-mongoose.connect(`mongodb://localhost/${config.database}`,
+mongoose.connect(`mongodb://${config.db_host}/${config.database}`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,

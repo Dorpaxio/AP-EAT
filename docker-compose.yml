@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ap-eat:
+    build: .
+    volumes:
+      - ./:/app
+      - /app/node_modules/
+    ports:
+      - '29321:29321'
+    links:
+      - mongo
+    env_file:
+      - ap-eat.env
+
+  mongo:
+    image: mongo:3.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
