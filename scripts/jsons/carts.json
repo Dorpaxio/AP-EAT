@@ -1,0 +1,13 @@
+[{
+	"restaurant": {
+		"$oid": "608a9b2f730f4211cbf37e3c"
+	},
+	"client": {
+		"$oid": "608a9b2f730f4211cbf37e3b"
+	},
+	"menus": [{
+		"$oid": "608a9b30730f4211cbf37e4c"
+	}, {
+		"$oid": "608a9b30730f4211cbf37e4d"
+	}]
+}]

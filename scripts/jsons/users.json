@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3a"
+  },
+  "admin": true,
+  "address": {
+    "street": "1 Place de la Comédie",
+    "city": "Montpellier",
+    "zip": "34000",
+    "country": "France",
+    "additional": ""
+  },
+  "email": "test@test.com",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "first_name": "Jean",
+  "last_name": "Michel",
+  "phone": "0701234567"
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3b"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "12 rue des oliviers",
+    "zip": "34000"
+  },
+  "email": "patrick@test.com",
+  "first_name": "patrick",
+  "last_name": "letoiledemer",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0600000001",
+  "type": "client"
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3c"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "69 rue des paquerettes",
+    "zip": "34000"
+  },
+  "email": "rastley@test.com",
+  "first_name": "rick",
+  "last_name": "astley",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0665948138",
+  "type": "restaurant"
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3d"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "1 rue des amandier",
+    "zip": "34000"
+  },
+  "email": "test123@test.com",
+  "first_name": "Jean",
+  "last_name": "Jean",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0600000000",
+  "type": "deliverer"
+}]
