@@ -117,14 +117,26 @@
 		"additional": "place Jean Jaurès",
 		"city": "Montpellier",
 		"country": "France",
-		"street": "666 rue des mandarines",
+		"street": "1 rue des mandarines",
 		"zip": "34000"
 	},
-	"email": "demonspace@test.com",
+	"email": "grandslam@test.com",
 	"first_name": "Jean-Charles",
 	"last_name": "Delaville",
+	"menus": [
+		{"$oid": "608a9b30730f4211cbf37e4c"},
+		{"$oid": "608a9b30730f4211cbf37e4d"}
+	],
 	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
 	"phone": "0666723845",
-	"restaurant_name": "Demon Souls",
+	"products": [
+		{"$oid": "608a9a1e730f4211cbf37d16"},
+		{"$oid": "608a9a1e730f4211cbf37d17"},
+		{"$oid": "608a9a1e730f4211cbf37d18"},
+		{"$oid": "608a9a1e730f4211cbf37d19"},
+		{"$oid": "608a9a1e730f4211cbf37d1a"},
+		{"$oid": "608a9a1e730f4211cbf37d1b"}
+	],
+	"restaurant_name": "Grand Slam Burger",
 	"type": "restaurant"
 }]
