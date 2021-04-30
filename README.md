@@ -1,5 +1,5 @@
-# ThovinAPI
-Simple API de test pour le projet Android du module HMIN205.
+# AP-EAT
+API pour service de livraison de nourriture. (Projet pour Faculté des sciences de Montpellier)
 
 * [Pré-requis](#pré-requis)
 * [Installation](#installation)
