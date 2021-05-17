@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "608a9b30730f4211cbf37e4c"
+  },
+  "name": "Menus Burger du mois",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "img_url": "https://uploads.lebonbon.fr/source/2020/january/2002400/burger-grand-slam-montpellier-2-_2_1100.jpg",
+  "products": [
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d19"
+      },
+      "price": 11.9
+    },
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d17"
+      },
+      "price": 3
+    }
+  ],
+  "category": "Burger"
+},{
+  "_id": {
+    "$oid": "608a9b30730f4211cbf37e4d"
+  },
+  "name": "Menus California Love",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "img_url": "https://uploads.lebonbon.fr/source/2020/january/2002400/burger-grand-slam-montpellier-2-_2_1100.jpg",
+  "products": [
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d16"
+      },
+      "price": 10.9
+    },
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d17"
+      },
+      "price": 3
+    }
+  ],
+  "category": "Burger"
+}]
