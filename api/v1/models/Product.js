@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema({
         required: false
     },
     type: {type: String, required: false}
-});
+}, {versionKey: false});
 
 /**
  * @class Product

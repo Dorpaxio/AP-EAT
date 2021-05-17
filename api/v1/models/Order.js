@@ -25,14 +25,14 @@ const orderSchema = new mongoose.Schema({
         },
         required: true
     }
-});
+}, {versionKey: false});
 
 /**
  * @alias Order.prototype.acceptPayment
  * @returns {Promise<string>} Retourne le statut de la commande
  */
 orderSchema.methods.acceptPayment = async function () {
-    if(this.status !== 'waiting_for_payment') {
+    if (this.status !== 'waiting_for_payment') {
         return this.updateStatus('pending');
     }
     return this.status;
@@ -43,7 +43,7 @@ orderSchema.methods.acceptPayment = async function () {
  * @returns {Promise<string>} Retourne le nouveau statut de la commande
  */
 orderSchema.methods.updateStatus = async function (status) {
-    if(!availableStatus.includes(status)) return this.status;
+    if (!availableStatus.includes(status)) return this.status;
     return this.save().then(order => order.status);
 }
 

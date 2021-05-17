@@ -56,7 +56,14 @@ userSchema.methods.comparePassword = function (candidatePassword) {
  */
 userSchema.methods.getCart = function () {
     const Cart = require('../../models/Cart');
-    return Cart.findOne({client: this._id}).then(function (cart) {
+    return Cart.findOne({client: this._id}).populate(['client',
+        {path: 'restaurant', select: ['restaurant_name', 'address']}, {
+        path: 'menus',
+        populate: {
+            path: 'products',
+            populate: 'product'
+        }
+    }]).then(function (cart) {
         return cart || {};
     });
 }
@@ -68,7 +75,7 @@ userSchema.methods.getCart = function () {
  * @param restaurantId {ObjectId} Identifiant du restaurant
  * @returns {Promise<Cart>} Retourne le panier modifié
  */
-userSchema.methods.addInCart = function(menuId, restaurantId) {
+userSchema.methods.addInCart = function (menuId, restaurantId) {
     const client = this;
     const Cart = require('../../models/Cart');
     return Cart.findOne({client: client._id}).then(function (cart) {

@@ -10,7 +10,7 @@ exports.getProducts = function (req, res, next) {
             });
         throw new ForbiddenError('PR40301', 'You are neither an admin or a restaurant.');
     }
-    return Product.find({}).then(function (products) {
+    return Product.find({}).populate('extras').exec().then(function (products) {
         return res.status(200).json(products);
     }).catch(next);
 }

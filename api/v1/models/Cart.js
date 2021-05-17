@@ -4,8 +4,8 @@ const Restaurant = require('./users/Restaurant');
 const {MenuNotFoundError, RestaurantNotFoundError, ConflictError} = require('../errors');
 
 const cartSchema = new mongoose.Schema({
-    restaurant: {type: mongoose.Types.ObjectId, ref: 'Restaurant', required: true},
-    client: {type: mongoose.Types.ObjectId, ref: 'Client', required: true},
+    restaurant: {type: mongoose.Types.ObjectId, ref: 'User', required: true},
+    client: {type: mongoose.Types.ObjectId, ref: 'User', required: true},
     menus: {
         type: [{
             type: mongoose.Types.ObjectId,
@@ -14,7 +14,7 @@ const cartSchema = new mongoose.Schema({
         }],
         required: true
     }
-});
+}, {versionKey: false});
 
 /**
  * @alias Cart.prototype.addMenu
@@ -24,12 +24,12 @@ const cartSchema = new mongoose.Schema({
  */
 cartSchema.methods.addMenu = async function (menuId, restaurantId) {
     const menu = await Menu.findOne({_id: menuId});
-    if(!menu) throw new MenuNotFoundError();
+    if (!menu) throw new MenuNotFoundError();
 
     const restaurant = await Restaurant.findOne({_id: restaurantId});
-    if(!restaurant) throw new RestaurantNotFoundError();
+    if (!restaurant) throw new RestaurantNotFoundError();
 
-    if(!this.restaurant.equals(restaurant._id))
+    if (!this.restaurant.equals(restaurant._id))
         throw new ConflictError('CA40900', 'Cart has already a menu from a different restaurant');
 
     this.menus.push(menu);
