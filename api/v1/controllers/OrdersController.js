@@ -27,7 +27,18 @@ exports.getOrders = function (req, res, next) {
     const {status} = req.query;
     if (status) query = {...query, status};
 
-    return Order.find(query).then(function (orders) {
+    const restaurantIncludeFields = ['restaurant_name', 'phone', 'email', 'address'];
+    const clientIncludeFields = ['first_name', 'name', 'phone', 'email', 'address'];
+
+    return Order.find(query).populate([
+        { path: 'restaurant', select: restaurantIncludeFields},
+        { path: 'client', select: clientIncludeFields},
+        { path: 'menus', populate: 
+            { path: 'products',
+                populate: 'product'
+            }
+        }
+    ]).then(function (orders) {
         return res.status(200).json(orders);
     }).catch(next);
 }
