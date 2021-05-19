@@ -33,7 +33,7 @@ cartSchema.methods.addMenu = async function (menuId, restaurantId) {
         throw new ConflictError('CA40900', 'Cart has already a menu from a different restaurant');
 
     this.menus.push(menu);
-    return this.save()
+    return this.save();
 }
 
 /**
