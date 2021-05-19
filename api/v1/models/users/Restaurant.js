@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Product = require('../Product');
-const {ProductNotFoundError, ConflictError} = require('../../errors');
+const { ProductNotFoundError, ConflictError } = require('../../errors');
 
 const restaurantSchema = new mongoose.Schema({
-    restaurant_name: {type: String, required: true},
-    products: {type: [{type: mongoose.Types.ObjectId, ref: 'Product'}], default: []},
-    menus: {type: [{type: mongoose.Types.ObjectId, ref: 'Menu'}], default: []}
-}, {discriminatorKey: 'type'});
+    restaurant_name: { type: String, required: true },
+    products: { type: [{ type: mongoose.Types.ObjectId, ref: 'Product' }], default: [] },
+    menus: { type: [{ type: mongoose.Types.ObjectId, ref: 'Menu' }], default: [] }
+}, { discriminatorKey: 'type' });
 
 /**
  * @alias Restaurant.prototype.addProduct
@@ -16,10 +16,10 @@ const restaurantSchema = new mongoose.Schema({
 restaurantSchema.methods.addProduct = async function (product) {
     if (product.extras && product.extras.length > 0) {
         const extraProducts = product.extras.map(p => p.product.toString());
-        if(new Set([...extraProducts]).size < extraProducts.length)
+        if (new Set([...extraProducts]).size < extraProducts.length)
             throw new ConflictError('REP409', 'One or several products are set as extra several times.');
 
-        const extras = await Product.find({_id: {$in: extraProducts}}, {_id: true});
+        const extras = await Product.find({ _id: { $in: extraProducts } }, { _id: true });
         if (extras.length < product.extras.length)
             throw new ProductNotFoundError('REP404', 'One or several extras contain unknown product');
     }
@@ -40,13 +40,17 @@ restaurantSchema.methods.addProduct = async function (product) {
  * @returns {Promise<[Restaurant]>} Restaurant mis à jour
  */
 restaurantSchema.methods.deleteProduct = function (productId) {
-    return Product.deleteOne({_id: productId}).exec().then(function (result) {
+    return Product.deleteOne({ _id: productId }).exec().then(function (result) {
         if (result.deletedCount === 0) return this;
-        return Product.updateMany({'extras.product': productId},
-            {$pull: {extras: {product: productId}}}, {multi: true});
+        return Product.updateMany({ 'extras.product': productId },
+            { $pull: { extras: { product: productId } } }, { multi: true });
     }).then(() => {
         this.products = this.products.filter(product => !product.equals(productId));
-        return this.save();
+        return this.save().then(function (restaurant) {
+            return restaurant.populate('products').execPopulate();
+        }).then(function (restaurant) {
+            return restaurant.products;
+        });;
     });
 }
 
