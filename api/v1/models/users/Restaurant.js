@@ -46,11 +46,11 @@ restaurantSchema.methods.deleteProduct = function (productId) {
             { $pull: { extras: { product: productId } } }, { multi: true });
     }).then(() => {
         this.products = this.products.filter(product => !product.equals(productId));
-        return this.save().then(function (restaurant) {
-            return restaurant.populate('products').execPopulate();
-        }).then(function (restaurant) {
-            return restaurant.products;
-        });;
+        return this.save();
+    }).then(function (restaurant) {
+        return restaurant.populate('products').execPopulate();
+    }).then(function (restaurant) {
+        return restaurant.products;
     });
 }
 
