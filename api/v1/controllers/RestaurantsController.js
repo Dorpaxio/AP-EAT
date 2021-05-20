@@ -20,7 +20,10 @@ const population = {
 exports.getRestaurants = function (req, res, next) {
     const select = excludedFields.reduce((obj, next) => obj = { ...obj, [next]: 0 }, {});
     
-    const query = Restaurant.find({}).populate(population).select(!req.user.admin ? select : {});
+    const query = Restaurant.find({}).populate({
+        path: 'menus', 
+        select: '_id category'
+    }).select(!req.user.admin ? select : {});
     return query.exec().then(function (restaurants) {
         return res.status(200).json(restaurants);
     }).catch(next);
