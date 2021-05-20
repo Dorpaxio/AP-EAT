@@ -1,5 +1,6 @@
 const Restaurant = require('../models/users/Restaurant');
 const { RestaurantNotFoundError } = require('../errors');
+const Menu = require('../models/Menu');
 
 const excludedFields = ['first_name', 'last_name', 'email', 'phone', 'products', 'admin', 'type'];
 const population = {
@@ -17,7 +18,27 @@ const population = {
 }
 
 exports.getRestaurants = function (req, res, next) {
+    const filter = req.query.filter;
     const select = excludedFields.reduce((obj, next) => obj = { ...obj, [next]: 0 }, {});
+    
+    if (filter) {
+        const query = Restaurant.find({}).populate({path: 'menus'}).select(!req.user.admin ? select : {})
+        return query.exec().then(function (restaurants) {
+            let filteredRestaurants = [];
+            restaurants.forEach(restaurant => {
+                for (const menu of restaurant.menus) {
+                    if (menu.category === filter) {
+                        filteredRestaurants.push(restaurant);
+                        break;
+                    }
+                }
+            });
+
+            console.log(filteredRestaurants);
+            return res.status(200).json(filteredRestaurants);
+        }).catch(next);
+    }
+
     const query = Restaurant.find({}).select(!req.user.admin ? select : {});
     return query.exec().then(function (restaurants) {
         return res.status(200).json(restaurants);
