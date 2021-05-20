@@ -11,7 +11,7 @@ const Restaurant = require('../models/users/Restaurant');
 const Deliverer = require('../models/users/Deliverer');
 
 const restaurantIncludeFields = ['restaurant_name', 'phone', 'email', 'address'];
-const clientIncludeFields = ['first_name', 'name', 'phone', 'email', 'address'];
+const clientIncludeFields = ['first_name', 'last_name', 'name', 'phone', 'email', 'address'];
 
 exports.getOrders = function (req, res, next) {
     let query;
