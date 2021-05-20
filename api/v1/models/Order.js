@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const availableStatus = ['waiting_for_payment', 'pending', 'accepted', 'ready', 'delivering', 'delivered'];
 
 const orderSchema = new mongoose.Schema({
-    restaurant: {type: mongoose.Types.ObjectId, ref: 'Restaurant', required: true},
+    restaurant: {type: mongoose.Types.ObjectId, ref: 'User', required: true},
     menus: {type: [{type: mongoose.Types.ObjectId, ref: 'Menu'}], required: true},
-    deliverer: {type: mongoose.Types.ObjectId, red: 'Deliverer', required: true},
-    client: {type: mongoose.Types.ObjectId, red: 'Client', required: true},
+    deliverer: {type: mongoose.Types.ObjectId, ref: 'User', required: true},
+    client: {type: mongoose.Types.ObjectId, ref: 'User', required: true},
     status: {
         type: String,
         enum: availableStatus,
