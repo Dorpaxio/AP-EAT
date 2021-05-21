@@ -5,7 +5,15 @@
   "name": "California Love",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "img_url": "https://uploads.lebonbon.fr/source/2020/january/2002400/burger-grand-slam-montpellier-2-_2_1100.jpg",
-  "type": "burger"
+  "type": "Burger"
+},{
+  "_id": {
+    "$oid": "608a9a1e730f4211cbf37d1c"
+  },
+  "name": "Bacon",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "img_url": "https://example.com/img/bacon.jpg",
+  "type": "Extra"
 },{
   "_id": {
     "$oid": "608a9a1e730f4211cbf37d17"
@@ -13,7 +21,7 @@
   "name": "Potatoes",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "img_url": "https://img.thrfun.com/img/091/893/fried_potatoes_x1.jpg",
-  "type": "accompaniment"
+  "type": "Accompaniment"
 },{
   "_id": {
     "$oid": "608a9a1e730f4211cbf37d18"
@@ -21,7 +29,15 @@
   "name": "Oasis",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "img_url": "https://tse4.mm.bing.net/th?id=OIP.5iOgbHVJG__GskI_yfxoZgHaHa&pid=Api",
-  "type": "drink"
+  "type": "Drink"
+},{
+  "_id": {
+    "$oid": "608a9a1e730f4211cbf37d1b"
+  },
+  "name": "Ice Tea",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "img_url": "https://tse1.mm.bing.net/th?id=OIP.7c9nIGK2sPdb-gDc5zCergHaHa&pid=Api",
+  "type": "Drink"
 },{
   "_id": {
     "$oid": "608a9a1e730f4211cbf37d19"
@@ -29,7 +45,7 @@
   "name": "Burger du mois",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "img_url": "https://uploads.lebonbon.fr/source/2020/january/2002400/burger-grand-slam-montpellier-2-_2_1100.jpg",
-  "type": "burger"
+  "type": "Burger"
 },{
   "_id": {
     "$oid": "608a9a1e730f4211cbf37d1a"
@@ -37,21 +53,21 @@
   "name": "Mozza revolution",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "img_url": "https://uploads.lebonbon.fr/source/2020/january/2002400/burger-grand-slam-montpellier-2-_2_1100.jpg",
-  "type": "burger"
-}, {
+  "type": "Burger"
+},{
   "_id": {
-    "$oid": "608a9a1e730f4211cbf37d1b"
+    "$oid": "608a9a1e730f4211cbf37d22"
   },
-  "name": "Ice Tea",
+  "name": "Plateau de sushis",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "img_url": "https://tse1.mm.bing.net/th?id=OIP.7c9nIGK2sPdb-gDc5zCergHaHa&pid=Api",
-  "type": "drink"
-}, {
+  "img_url": "https://claap.fr/wp-content/uploads/2019/03/sushi-740x463.jpg",
+  "type": "Sushi"
+},{
   "_id": {
-    "$oid": "608a9a1e730f4211cbf37d1c"
+    "$oid": "60a7a5ef57acaa05947f47eb"
   },
-  "name": "Bacon",
+  "name": "Salade 4 saisons",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "img_url": "https://example.com/img/bacon.jpg",
-  "type": "extra"
+  "img_url": "https://d1ralsognjng37.cloudfront.net/07721d16-5f5c-4576-8c90-a7bcaa8c4181.jpeg",
+  "type": "Salad"
 }]

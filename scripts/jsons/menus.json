@@ -17,6 +17,12 @@
         "$oid": "608a9a1e730f4211cbf37d17"
       },
       "price": 3
+    },
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d1b"
+      },
+      "price": 2
     }
   ],
   "category": "Burger"
@@ -39,7 +45,57 @@
         "$oid": "608a9a1e730f4211cbf37d17"
       },
       "price": 3
+    },
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d1b"
+      },
+      "price": 2
     }
   ],
   "category": "Burger"
+},{
+  "_id": {
+    "$oid": "608a9b30730f4211cbf37e4e"
+  },
+  "name": "Tandem Sushis",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "img_url": "https://claap.fr/wp-content/uploads/2019/03/sushi-740x463.jpg",
+  "products": [
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d22"
+      },
+      "price": 11.9
+    },
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d17"
+      },
+      "price": 3
+    }
+  ],
+  "category": "Sushi"
+},{
+  "_id": {
+    "$oid": "60a7ae9757acaa05947f47ec"
+  },
+  "name": "Menu salade 4 saisons",
+  "description": "Une salade rafraichissante qui vous rappellera les saveurs de chacunes de nos magnifiques saisons.",
+  "img_url": "https://d1ralsognjng37.cloudfront.net/07721d16-5f5c-4576-8c90-a7bcaa8c4181.jpeg",
+  "products": [
+    {
+      "product": {
+        "$oid": "60a7a5ef57acaa05947f47eb"
+      },
+      "price": 11.9
+    },
+    {
+      "product": {
+        "$oid": "608a9a1e730f4211cbf37d1b"
+      },
+      "price": 2
+    }
+  ],
+  "category": "Salad"
 }]
