@@ -10,6 +10,9 @@ const Cart = require('../models/Cart');
 const Restaurant = require('../models/users/Restaurant');
 const Deliverer = require('../models/users/Deliverer');
 
+const restaurantIncludeFields = ['restaurant_name', 'phone', 'email', 'address'];
+const clientIncludeFields = ['first_name', 'last_name', 'name', 'phone', 'email', 'address'];
+
 exports.getOrders = function (req, res, next) {
     let query;
     switch (req.user.type) {
@@ -27,7 +30,15 @@ exports.getOrders = function (req, res, next) {
     const {status} = req.query;
     if (status) query = {...query, status};
 
-    return Order.find(query).then(function (orders) {
+    return Order.find(query).populate([
+        { path: 'restaurant', select: restaurantIncludeFields},
+        { path: 'client', select: clientIncludeFields},
+        { path: 'menus', populate: 
+            { path: 'products',
+                populate: 'product'
+            }
+        }
+    ]).then(function (orders) {
         return res.status(200).json(orders);
     }).catch(next);
 }
@@ -54,10 +65,18 @@ exports.passOrder = async function (req, res, next) {
         let query = {_id: cartId};
         if (!cartId) query = {client: req.user._id};
 
-        const cart = await Cart.findOne(query);
+        const cart = await Cart.findOne(query).populate([
+            { path: 'client', clientIncludeFields },
+            { path: 'menus', populate:
+                {
+                    path: 'products',
+                    populate: 'product'
+                }
+            }
+        ]);
         if (!cart) return next(new CartNotFoundError());
 
-        const restaurant = await Restaurant.findOne({_id: cart.restaurant});
+        const restaurant = await Restaurant.findOne({ _id: cart.restaurant }, restaurantIncludeFields);
         if (!restaurant) return new RestaurantNotFoundError();
 
         const ordersBeingDelivered = await Order.find({status: {$ne: 'delivered'}}, {deliverer: true});
@@ -68,7 +87,7 @@ exports.passOrder = async function (req, res, next) {
             restaurant,
             client: cart.client,
             menus: cart.menus,
-            deliverer,
+            deliverer: deliverer._id,
             payment: {credit_card}
         });
         const order = await newOrder.save();
