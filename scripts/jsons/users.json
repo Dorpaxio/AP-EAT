@@ -1,142 +1,263 @@
 [{
-	"_id": {
-		"$oid": "608a9b2f730f4211cbf37e3a"
-	},
-	"admin": true,
-	"address": {
-		"street": "1 Place de la Comédie",
-		"city": "Montpellier",
-		"zip": "34000",
-		"country": "France",
-		"additional": ""
-	},
-	"email": "test@test.com",
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"first_name": "Jean",
-	"last_name": "Michel",
-	"phone": "0701234567"
-}, {
-	"_id": {
-		"$oid": "608a9b2f730f4211cbf37e3b"
-	},
-	"admin": false,
-	"address": {
-		"additional": "",
-		"city": "Montpellier",
-		"country": "France",
-		"street": "12 rue des oliviers",
-		"zip": "34000"
-	},
-	"email": "patrick@test.com",
-	"first_name": "patrick",
-	"last_name": "letoiledemer",
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"phone": "0600000001",
-	"type": "client"
-}, {
-	"_id": {
-		"$oid": "608a9b2f730f4211cbf37e3c"
-	},
-	"admin": false,
-	"address": {
-		"additional": "",
-		"city": "Montpellier",
-		"country": "France",
-		"street": "69 rue des paquerettes",
-		"zip": "34000"
-	},
-	"email": "rastley@test.com",
-	"first_name": "rick",
-	"last_name": "astley",
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"phone": "0665948138",
-	"restaurant_name": "ClickRolled",
-	"type": "restaurant"
-}, {
-	"_id": {
-		"$oid": "608a9b2f730f4211cbf37e3d"
-	},
-	"admin": false,
-	"address": {
-		"additional": "",
-		"city": "Montpellier",
-		"country": "France",
-		"street": "1 rue des amandier",
-		"zip": "34000"
-	},
-	"email": "test123@test.com",
-	"first_name": "Jean",
-	"last_name": "Jean",
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"phone": "0600000000",
-	"type": "deliverer"
-}, {
-	"_id": {
-		"$oid": "608a9b2f730f4211cbf37e3e"
-	},
-	"admin": false,
-	"address": {
-		"additional": "",
-		"city": "Montpellier",
-		"country": "France",
-		"street": "420 rue des paquerettes",
-		"zip": "34000"
-	},
-	"email": "sushishop@test.com",
-	"first_name": "Yves",
-	"last_name": "Dumontet",
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"phone": "0665946845",
-	"restaurant_name": "Sushi Shop",
-	"type": "restaurant"
-}, {
-	"_id": {
-		"$oid": "608a9b2f730f4211cbf37e3f"
-	},
-	"admin": false,
-	"address": {
-		"additional": "place Jean Jaurès",
-		"city": "Montpellier",
-		"country": "France",
-		"street": "5 rue des mandarines",
-		"zip": "34000"
-	},
-	"email": "thaipower@test.com",
-	"first_name": "Gin",
-	"last_name": "Onuzuki",
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"phone": "0665946845",
-	"restaurant_name": "Thaï Power",
-	"type": "restaurant"
-}, {
-	"_id": {
-		"$oid": "608aa0da730f4211cbf38225"
-	},
-	"admin": false,
-	"address": {
-		"additional": "place Jean Jaurès",
-		"city": "Montpellier",
-		"country": "France",
-		"street": "1 rue des mandarines",
-		"zip": "34000"
-	},
-	"email": "grandslam@test.com",
-	"first_name": "Jean-Charles",
-	"last_name": "Delaville",
-	"menus": [
-		{"$oid": "608a9b30730f4211cbf37e4c"},
-		{"$oid": "608a9b30730f4211cbf37e4d"}
-	],
-	"password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
-	"phone": "0666723845",
-	"products": [
-		{"$oid": "608a9a1e730f4211cbf37d16"},
-		{"$oid": "608a9a1e730f4211cbf37d17"},
-		{"$oid": "608a9a1e730f4211cbf37d18"},
-		{"$oid": "608a9a1e730f4211cbf37d19"},
-		{"$oid": "608a9a1e730f4211cbf37d1a"},
-		{"$oid": "608a9a1e730f4211cbf37d1b"}
-	],
-	"restaurant_name": "Grand Slam Burger",
-	"type": "restaurant"
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3a"
+  },
+  "admin": true,
+  "address": {
+    "street": "1 Place de la Comédie",
+    "city": "Montpellier",
+    "zip": "34000",
+    "country": "France",
+    "additional": ""
+  },
+  "email": "test@test.com",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "first_name": "Jean",
+  "last_name": "Michel",
+  "phone": "0701234567"
+},{
+  "_id": {
+    "$oid": "608aa0da730f4211cbf38225"
+  },
+  "admin": false,
+  "address": {
+    "additional": "place Jean Jaurès",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "1 rue des mandarines",
+    "zip": "34000"
+  },
+  "email": "grandslam@test.com",
+  "first_name": "Jean-Charles",
+  "last_name": "Delaville",
+  "menus": [
+    {
+      "$oid": "608a9b30730f4211cbf37e4c"
+    },
+    {
+      "$oid": "608a9b30730f4211cbf37e4d"
+    },
+    {
+      "$oid": "608b03c2f16c0204c95e2586"
+    },
+    {
+      "$oid": "608b088bf16c0204c95e2587"
+    }
+  ],
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0666723845",
+  "products": [
+    {
+      "$oid": "608a9a1e730f4211cbf37d16"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d17"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d18"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d19"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d1a"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d1b"
+    },
+    {
+      "$oid": "60a42bef2b37ce0244cb2f93"
+    },
+    {
+      "$oid": "60a439022b37ce0244cb2f94"
+    },
+    {
+      "$oid": "60a445b42b37ce0244cb2f95"
+    },
+    {
+      "$oid": "60a448a62b37ce0244cb2f96"
+    },
+    {
+      "$oid": "60a44e5a2b37ce0244cb2f98"
+    },
+    {
+      "$oid": "60a4d8f75fe35a004cc28efa"
+    },
+    {
+      "$oid": "60a4d95e5fe35a004cc28efb"
+    },
+    {
+      "$oid": "60a4d9ae5fe35a004cc28efc"
+    },
+    {
+      "$oid": "60a4da515fe35a004cc28efd"
+    },
+    {
+      "$oid": "60a4da635fe35a004cc28efe"
+    },
+    {
+      "$oid": "60a4dbaa5fe35a004cc28eff"
+    },
+    {
+      "$oid": "60a4dc595fe35a004cc28f00"
+    }
+  ],
+  "restaurant_name": "Grand Slam Burger",
+  "type": "restaurant",
+  "__v": 28
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3e"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "420 rue des paquerettes",
+    "zip": "34000"
+  },
+  "email": "sushishop@test.com",
+  "first_name": "Yves",
+  "last_name": "Dumontet",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0665946845",
+  "restaurant_name": "Sushi Shop",
+  "type": "restaurant",
+  "menus": [
+    {
+      "$oid": "608a9b30730f4211cbf37e4e"
+    }
+  ],
+  "products": [
+    {
+      "$oid": "608a9a1e730f4211cbf37d17"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3d"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "1 rue des amandier",
+    "zip": "34000"
+  },
+  "email": "test123@test.com",
+  "first_name": "Jean",
+  "last_name": "Jean",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0600000000",
+  "type": "deliverer"
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3b"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "12 rue des oliviers",
+    "zip": "34000"
+  },
+  "email": "patrick@test.com",
+  "first_name": "patrick",
+  "last_name": "letoiledemer",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0600000001",
+  "type": "client"
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3c"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "69 rue des paquerettes",
+    "zip": "34000"
+  },
+  "email": "rastley@test.com",
+  "first_name": "rick",
+  "last_name": "astley",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0665948138",
+  "restaurant_name": "ClickRolled",
+  "type": "restaurant"
+},{
+  "_id": {
+    "$oid": "608a9b2f730f4211cbf37e3f"
+  },
+  "admin": false,
+  "address": {
+    "additional": "place Jean Jaurès",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "5 rue des mandarines",
+    "zip": "34000"
+  },
+  "email": "thaipower@test.com",
+  "first_name": "Gin",
+  "last_name": "Onuzuki",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0665946845",
+  "restaurant_name": "Thaï Power",
+  "type": "restaurant",
+  "menus": [
+    {
+      "$oid": "60a7ae9757acaa05947f47ec"
+    }
+  ],
+  "products": [
+    {
+      "$oid": "608a9a1e730f4211cbf37d16"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d17"
+    },
+    {
+      "$oid": "608a9a1e730f4211cbf37d18"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "628a9b2f730f4211cbf37e3d"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "1 rue des amandier",
+    "zip": "34000"
+  },
+  "email": "test84@test.com",
+  "first_name": "Jean",
+  "last_name": "Jean",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0600000000",
+  "type": "deliverer"
+},{
+  "_id": {
+    "$oid": "698a9b2f730f4211cbf37e3d"
+  },
+  "admin": false,
+  "address": {
+    "additional": "",
+    "city": "Montpellier",
+    "country": "France",
+    "street": "1 rue des amandier",
+    "zip": "34000"
+  },
+  "email": "test1234@test.com",
+  "first_name": "Jean",
+  "last_name": "Jean",
+  "password": "$2b$10$obAapyreVuCGThlbo0/1D.ajFTmi51f5.5mL9j4XmoayZX7cxHxhG",
+  "phone": "0600000000",
+  "type": "deliverer"
 }]
