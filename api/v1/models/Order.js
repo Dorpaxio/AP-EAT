@@ -42,9 +42,15 @@ orderSchema.methods.acceptPayment = async function () {
  * @alias Order.prototype.updateStatus
  * @returns {Promise<string>} Retourne le nouveau statut de la commande
  */
-orderSchema.methods.updateStatus = async function (status) {
-    if(!availableStatus.includes(status)) return this.status;
-    return this.save().then(order => order.status);
+orderSchema.methods.updateStatus = async function () {
+    const index = availableStatus.indexOf(this.status);
+    if (index < 0 || index == availableStatus.length - 1) 
+        return this.status;
+    else {
+        this.status = availableStatus[index + 1];
+        console.log(availableStatus[index + 1])
+        return this.save().then(order => order.status);
+    }
 }
 
 /**
