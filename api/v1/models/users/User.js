@@ -2,24 +2,24 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-    first_name: {type: String, required: true},
-    last_name: {type: String, required: true},
-    email: {type: String, required: true},
-    phone: {type: String, required: true},
-    password: {type: String, required: true, select: false},
+    first_name: { type: String, required: true },
+    last_name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    password: { type: String, required: true, select: false },
     address: {
         type: {
-            street: {type: String, required: true},
-            additional: {type: String, required: false},
-            city: {type: String, required: true},
-            zip: {type: String, required: true},
-            country: {type: String, default: 'France'}
+            street: { type: String, required: true },
+            additional: { type: String, required: false },
+            city: { type: String, required: true },
+            zip: { type: String, required: true },
+            country: { type: String, default: 'France' }
         },
         required: true
     },
-    admin: {type: Boolean, default: false},
-    type: {type: String, default: 'client'}
-}, {discriminatorKey: 'type'});
+    admin: { type: Boolean, default: false },
+    type: { type: String, default: 'client' }
+}, { discriminatorKey: 'type' });
 
 userSchema.pre('save', function (next) {
     if (!this.isModified('password')) return next();
@@ -56,7 +56,13 @@ userSchema.methods.comparePassword = function (candidatePassword) {
  */
 userSchema.methods.getCart = function () {
     const Cart = require('../../models/Cart');
-    return Cart.findOne({client: this._id}).then(function (cart) {
+    return Cart.findOne({ client: this._id }).populate([{
+        path: 'menus',
+        populate: {
+            path: 'products',
+            populate: 'product'
+        }
+    }]).then(function (cart) {
         return cart || {};
     });
 }
@@ -68,13 +74,22 @@ userSchema.methods.getCart = function () {
  * @param restaurantId {ObjectId} Identifiant du restaurant
  * @returns {Promise<Cart>} Retourne le panier modifié
  */
-userSchema.methods.addInCart = function(menuId, restaurantId) {
+userSchema.methods.addInCart = function (menuId, restaurantId) {
     const client = this;
     const Cart = require('../../models/Cart');
-    return Cart.findOne({client: client._id}).then(function (cart) {
-        if (!cart) cart = new Cart({client: client._id, restaurant: restaurantId, menus: []});
-        return cart.addMenu(menuId, restaurantId);
-    });
+    return Cart.findOne({ client: client._id })
+        .then(function (cart) {
+            if (!cart) cart = new Cart({ client: client._id, restaurant: restaurantId, menus: [] });
+            return cart.addMenu(menuId, restaurantId);
+        }).then(function (cart) {
+            return cart.populate([{
+                path: 'menus',
+                populate: {
+                    path: 'products',
+                    populate: 'product'
+                }
+            }]).execPopulate();
+        });
 }
 
 /**

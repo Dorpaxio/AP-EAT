@@ -40,3 +40,9 @@ exports.addInCart = async function (req, res, next) {
         next(err);
     }
 }
+
+exports.deleteCart = function (req, res, next) {
+    Cart.deleteOne({client: req.user._id}).then(function (result) {
+        return res.status(204).send();
+    }).catch(next);
+}

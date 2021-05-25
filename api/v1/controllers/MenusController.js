@@ -21,7 +21,19 @@ exports.getMenus = async function (req, res, next) {
 }
 
 exports.getRestaurantMenus = function (req, res, next) {
-    return req.restaurant.populate('menus').execPopulate().then(function (restaurant) {
+    return req.restaurant.populate({
+        path: 'menus',
+        populate: {
+            path: 'products',
+            populate: {
+                path: 'product',
+                populate: {
+                    path: 'extras',
+                    populate: 'product'
+                }
+            }
+        }
+    }).execPopulate().then(function (restaurant) {
         return res.status(200).json(restaurant.menus);
     }).catch(next);
 }

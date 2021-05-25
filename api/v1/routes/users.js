@@ -17,6 +17,7 @@ router.route('/me/cart')
     .post(body('restaurant').isMongoId(),
         body('menu').isMongoId(),
         validation,
-        cartsController.addInCart);
+        cartsController.addInCart)
+    .delete(cartsController.deleteCart);
 
 module.exports = router;

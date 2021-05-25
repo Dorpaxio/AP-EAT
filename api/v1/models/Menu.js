@@ -14,7 +14,7 @@ const menuSchema = new mongoose.Schema({
         required: true
     },
     category: {type: String, required: false}
-});
+}, {versionKey: false});
 
 /**
  * @class Menu
