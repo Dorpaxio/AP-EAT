@@ -96,3 +96,15 @@ exports.passOrder = async function (req, res, next) {
         return next(err);
     }
 }
+
+exports.updateStatus = async function (req, res, next) {
+    const orderId = req.order;
+    const status = req.body.status;
+
+    try {
+        const order = await Order.findOne({ _id: orderId });
+        return res.status(201).json(await order.updateStatus(status));
+    } catch (err) {
+        return next(err);
+    }
+}

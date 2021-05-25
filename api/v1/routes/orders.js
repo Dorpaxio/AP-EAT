@@ -9,6 +9,7 @@ router.route('/')
 router.param('orderId', ordersController.orderParamMiddleware);
 
 router.route('/:orderId')
-    .get(ordersController.getOrder);
+    .get(ordersController.getOrder)
+    .post(ordersController.updateStatus);
 
 module.exports = router;
