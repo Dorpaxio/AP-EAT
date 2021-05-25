@@ -48,7 +48,6 @@ orderSchema.methods.updateStatus = async function () {
         return this.status;
     else {
         this.status = availableStatus[index + 1];
-        console.log(availableStatus[index + 1])
         return this.save().then(order => order.status);
     }
 }
