@@ -3,7 +3,7 @@ API pour service de livraison de nourriture. (Projet pour Faculté des sciences 
 
 * [Pré-requis](#pré-requis)
 * [Installation](#installation)
-* [Remplir la base de données (optionnal)](#remplir-la-base-de-données-optionnal)
+* [Remplir la base de données (optionnel)](#remplir-la-base-de-données-optionnel)
 * [Lancer](#lancer)
 
 
