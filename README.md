@@ -26,7 +26,7 @@ cd AP-EAT
 npm install # Pour installer les dépendances
 ```
 
-## Remplir la base de données (optionnal)
+## Remplir la base de données (optionnel)
 Au premier démarrage la base de donnée est vide, si vous le souhaitez nous avons ajouté un script permettant de la remplir.
 ```bash
 cd scripts/
